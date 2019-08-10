@@ -6,7 +6,7 @@ void xor(char *input,int n){
 	char xor_key[] = "A";
 
 	for (int i = 0;i < n ;i++){
-		input[i] = input[i] ^ xor_key[i % sizeof(xor_key - 1)];
+		input[i] = input[i] ^ xor_key[i % (sizeof(xor_key)/sizeof(xor_key[0]) - 1)];
 	}
 }
 
@@ -23,7 +23,6 @@ int main(int argc, const char **argv){
 	strncpy(message,input,input_sz);
 	printf("\n%s\n",message);
 	xor(message,input_sz);
-	printf("The message xor'd with 0xc is:\n");
 	printf("%s\n\n",message);
 	for (int i = 0; i < input_sz;i++){
 		printf("\\x%x",message[i]);
